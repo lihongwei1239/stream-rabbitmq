@@ -17,6 +17,7 @@
 		ignore-resource-not-found="true" />
 
 	<mvc:annotation-driven />
-	
+
+	<import resource="appliaction-mq.xml"/>
 
 </beans>
