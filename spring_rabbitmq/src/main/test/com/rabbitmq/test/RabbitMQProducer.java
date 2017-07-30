@@ -1,8 +1,11 @@
 package com.rabbitmq.test;
 
-import com.rabbitmq.producer.MQProduce;
+import com.rabbitmq.producer.MessageProducer;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by lihongwei1239 on 2017/7/30.
@@ -10,17 +13,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class RabbitMQProducer extends AbstractConfigTest {
 
     @Autowired
-    private MQProduce MQProduce;
+    private MessageProducer messageProducer;
 
-    final String queue_key = "test_queue";
+    private String queueId ="test_mq";
 
     @Test
     public void sendDataToQueue() throws Exception{
 
-        for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            Thread.sleep(10000);
-            MQProduce.sendDataToQueue(queue_key,"hello world");
-        }
+        Map<String, Object> map = new HashMap<String, Object>();
+        map.put("data", "hello rabbitmq");
+        messageProducer.sendQueue(queueId + "_exchange", queueId + "_patt", map);
     }
 
 }
