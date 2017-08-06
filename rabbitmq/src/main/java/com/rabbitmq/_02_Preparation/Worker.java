@@ -1,6 +1,9 @@
 package com.rabbitmq._02_Preparation;
 
-import com.rabbitmq.client.*;
+import com.rabbitmq.client.Channel;
+import com.rabbitmq.client.Connection;
+import com.rabbitmq.client.ConnectionFactory;
+import com.rabbitmq.client.QueueingConsumer;
 
 /**
  * Created by lihongwei1239 on 2017/7/28.
